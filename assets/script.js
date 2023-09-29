@@ -1,6 +1,9 @@
 requestUrl1 = 'https://www.dnd5eapi.co/api/races'; //Races
 requestUrl = 'https://www.dnd5eapi.co/api/classes'; //classes
+var charButton = $("#classGen");
+var raceButton = $("#raceGen");
 
+charClass = function(event) { //class random creation function.
 fetch(requestUrl)
   .then(function (response) {
     return response.json();
@@ -13,15 +16,14 @@ fetch(requestUrl)
         var chosenClass = classes[randomIndex];
         console.log(chosenClass.name);
 
-       
-       
-       
+        var buttonText = $("#classText");
+        buttonText.text(chosenClass.name);
        
   });
+}
 
 
-
-
+charRace = function(event) {
 
   fetch(requestUrl1)
   .then(function (response) {
@@ -35,4 +37,11 @@ fetch(requestUrl)
         var chosenRace = races[randomIndex];
         console.log(chosenRace.name);
 
+        var buttonText = $("#raceText");
+        buttonText.text(chosenRace.name);
+
   });
+}
+
+  charButton.on("click", charClass)
+  raceButton.on("click", charRace)
