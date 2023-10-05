@@ -13,21 +13,21 @@
 
   <nav class="navbar is-dark is-justify-content-center">
     <div class="navbar-brand  ">
-            <img src="/assets/images/20.png" alt="Nat-20" width="100px">
+            <img class = "rollDice" src="/assets/images/20.png" alt="Nat-20" width="100px">
             <h1 class="is-size-1 has-text-weight-bold has-text-primary-light is-flex is-justify-content-center">Dnd Character Generator</h1>
-            <img src="/assets/images/1.png" alt="Nat-20" width="100px">
+            <img class = "rollDice" src="/assets/images/1.png" alt="Nat-20" width="100px">
     </div>
     
     
 </nav>
 
 <header class = "image">
-  <img src="/assets/images/The-Fierce-Force-1024x576.jpg" alt="Nat-20">
+  <img  src="/assets/images/The-Fierce-Force-1024x576.jpg" alt="Nat-20">
 </header>
 
 
 <!--Progress Bar-->
-<progress class="progress is-success" value="60" max="100">60%</progress> 
+<progress class="progress is-success" value="0" max="100"></progress> 
 
 
     
@@ -44,20 +44,20 @@
           <p style="margin-bottom: 100px;" >Class Generator</p>
           
           <div>
-            <button id="classGen" class="button is-danger">Create</button>
             <p id="classText"></p>
+            <button id="classGen" class="button is-danger">Create</button>
           </div>
         </div>
         <div class="column">
           <p style="margin-bottom: 100px;">Race Generator</p>
           
           <div id="buttons">
-            <button id="raceGen" class="button is-danger">Create</button>
             <p id ="raceText"></p>
+            <button id="raceGen" class="button is-danger">Create</button>
           </div>
         </div>
         <div class="column">
-          <p style="margin-bottom: 100px;">Skill Generator</p>
+          <p style="margin-bottom: 100px;">Stat Generator</p>
           
           <div id="buttons">
             <button id="skillGen" class="button is-danger" style="margin-bottom: 100px;">Create</button>
@@ -67,10 +67,10 @@
       </div>
 
       <!--Center Save button-->
-      <div class="columns is-centered">
+      <div class="columns is-centered mt-6">
         <div class="column is-narrow">
           <button class="button is-primary is-large">Save</button>
-          <button class="button is-primary is-large" style="margin-left: 150px;">Reroll</button>
+          <button id ="rerollButton"class="button is-primary is-large" style="margin-left: 150px;">Reroll</button>
         </div>
       </div>
 
@@ -80,10 +80,8 @@
       
         <h1 class="is-size-1 has-text-weight-bold has-text-primary-light is-flex is-justify-content-center">Saved Characters</h1>
 
-        <div class="is-size-1 has-text-weight-bold has-text-primary-light is-justify-content-center"> <!-- can post saved characters here, class race name and skills.-->
-          <p>1</p> <!-- these are just examples.-->
-          <p>2</p>
-          <p>3</p>
+        <div class="is-size-1 has-text-weight-bold has-text-primary-light is-justify-content-center" id="savedCharacter"> <!-- can post saved characters here, class race name and skills.-->
+          
         </div>
 
       </div>
