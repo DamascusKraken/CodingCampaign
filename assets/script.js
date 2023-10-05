@@ -1,5 +1,11 @@
-requestUrl1 = 'https://www.dnd5eapi.co/api/races'; //Races
 requestUrl = 'https://www.dnd5eapi.co/api/classes'; //classes
+
+requestUrl1 = 'https://www.dnd5eapi.co/api/races'; //Races
+requestUrl2 = 'https://api.fungenerators.com/name/generate?category=dragon&limit=10'; //Names
+var charButton = $("#classGen");
+var raceButton = $("#raceGen");
+var nameButton = $("#nameGen");
+
 
 let degreesToRotate = 90;
 
@@ -12,6 +18,7 @@ var progressBar = {}; //evalutes if we have already updated the progress bar for
 
 //Section for localStorage, need to change to an array later on.
 var characterClass = localStorage.getItem("characterClass");
+
 
 
 charClass = function(event) { //class random creation function.
@@ -70,6 +77,33 @@ charRace = function(event) {
   });
 }
 
+
+charButton.on("click", charClass)
+raceButton.on("click", charRace)
+
+
+
+charName = function(event) {
+
+  fetch(requestUrl2)
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(data) {
+    console.log(data);
+    var names = data.contents.names;
+    console.log(names);
+        var randomIndex = Math.floor(Math.random() * names.length);
+        var randomName = names[randomIndex];
+        console.log(randomName);
+      var buttonText = $("#nameText");
+      buttonText.text(randomName);
+});
+}
+
+nameButton.on("click", charName)
+
+
 savedCharacters = function(){ //beginging of saving characters. We need to add an array of things to append. Right now it will only append one item from our last. We also want to append a paragraph for each character.
   savedCharacter.append(characterClass)
 
@@ -104,3 +138,4 @@ setInterval(diceRoll, 10);
   diceRoll();
 
   savedCharacters();
+
