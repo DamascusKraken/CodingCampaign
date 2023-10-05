@@ -12,6 +12,7 @@ var progressBar = {}; //evalutes if we have already updated the progress bar for
 
 //Section for localStorage, need to change to an array later on.
 var characterClass = localStorage.getItem("characterClass");
+var classSave;
 
 
 charClass = function(event) { //class random creation function.
@@ -35,8 +36,8 @@ fetch(requestUrl)
           incrementProgressBar();
           progressBar[0] = true;
         }
-
-        localStorage.setItem("characterClass",chosenClass.name);
+        classSave = chosenClass.name;
+        
   
         
        
@@ -71,7 +72,9 @@ charRace = function(event) {
 }
 
 savedCharacters = function(){ //beginging of saving characters. We need to add an array of things to append. Right now it will only append one item from our last. We also want to append a paragraph for each character.
+  localStorage.setItem("characterClass",classSave);
   savedCharacter.append(characterClass)
+  
 
 }
 
