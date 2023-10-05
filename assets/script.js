@@ -4,6 +4,9 @@ requestUrl1 = 'https://www.dnd5eapi.co/api/races'; //Races
 requestUrl2 = 'https://api.fungenerators.com/name/generate?category=dragon&limit=10'; //Names
 var charButton = $("#classGen");
 var raceButton = $("#raceGen");
+
+var statButton = $("#statGen");
+
 var nameButton = $("#nameGen");
 
 
@@ -18,6 +21,7 @@ var progressBar = {}; //evalutes if we have already updated the progress bar for
 
 //Section for localStorage, need to change to an array later on.
 var characterClass = localStorage.getItem("characterClass");
+
 
 
 
@@ -77,6 +81,30 @@ charRace = function(event) {
   });
 }
 
+
+statStandardGen = function(event) { // Stat Random Generator Function (Standard Array)
+  // var str = 8, dex = 8, con = 8;
+  // var int = 8, wis = 8, cha = 8;
+var maxRand = 5;
+  var standardArray = [15,14,13,12,10,8];
+  var statArray  = new Array(5);
+  for(var i = 0; i < 6; i++){
+    var result = Math.floor((Math.random() * maxRand) );
+    statArray[i]  = standardArray[result];
+    standardArray.splice(result, 1);
+    maxRand = maxRand - 1;
+  }
+
+  for(var i = 0; i < 6; i++){
+    console.log("this is the stat array: "  + statArray[i]);
+  }
+
+}
+
+  charButton.on("click", charClass)
+  raceButton.on("click", charRace)
+  statButton.on("click", statStandardGen)
+=======
 
 charButton.on("click", charClass)
 raceButton.on("click", charRace)
@@ -138,4 +166,5 @@ setInterval(diceRoll, 10);
   diceRoll();
 
   savedCharacters();
+
 
