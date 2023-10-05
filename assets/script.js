@@ -83,8 +83,7 @@ charRace = function(event) {
 
 
 statStandardGen = function(event) { // Stat Random Generator Function (Standard Array)
-  // var str = 8, dex = 8, con = 8;
-  // var int = 8, wis = 8, cha = 8;
+
 var maxRand = 5;
   var standardArray = [15,14,13,12,10,8];
   var statArray  = new Array(5);
@@ -96,15 +95,21 @@ var maxRand = 5;
   }
 
   for(var i = 0; i < 6; i++){
+    var attributes = ["Strength: ", "Wisdom: ","Constitution: ", "Intelligence: ", "Wisdom: ", "Charisma: "];
     console.log("this is the stat array: "  + statArray[i]);
+    statIndex = i +1;
+    var stat = $("#stat-" + statIndex);
+      stat.text(attributes[i] + statArray[i]);
+      
   }
+
 
 }
 
   charButton.on("click", charClass)
   raceButton.on("click", charRace)
   statButton.on("click", statStandardGen)
-=======
+
 
 charButton.on("click", charClass)
 raceButton.on("click", charRace)
@@ -166,5 +171,4 @@ setInterval(diceRoll, 10);
   diceRoll();
 
   savedCharacters();
-
 
