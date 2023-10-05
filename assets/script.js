@@ -83,23 +83,29 @@ charRace = function(event) {
 
 
 statStandardGen = function(event) { // Stat Random Generator Function (Standard Array)
-  // var str = 8, dex = 8, con = 8;
-  // var int = 8, wis = 8, cha = 8;
-var maxRand = 5;
-  var standardArray = [15,14,13,12,10,8];
-  var statArray  = new Array(5);
-  for(var i = 0; i < 6; i++){
-    var result = Math.floor((Math.random() * maxRand) );
-    statArray[i]  = standardArray[result];
-    standardArray.splice(result, 1);
-    maxRand = maxRand - 1;
-  }
 
-  for(var i = 0; i < 6; i++){
-    console.log("this is the stat array: "  + statArray[i]);
+  var maxRand = 5;
+    var standardArray = [15,14,13,12,10,8];
+    var statArray  = new Array(5);
+    for(var i = 0; i < 6; i++){
+      var result = Math.floor((Math.random() * maxRand) );
+      statArray[i]  = standardArray[result];
+      standardArray.splice(result, 1);
+      maxRand = maxRand - 1;
+    }
+  
+    for(var i = 0; i < 6; i++){
+      var attributes = ["Strength: ", "Wisdom: ","Constitution: ", "Intelligence: ", "Wisdom: ", "Charisma: "];
+      console.log("this is the stat array: "  + statArray[i]);
+      statIndex = i +1;
+      var stat = $("#stat-" + statIndex);
+        stat.text(attributes[i] + statArray[i]);
+        
+    }
+  
+  
   }
-
-}
+  
 
   charButton.on("click", charClass)
   raceButton.on("click", charRace)
