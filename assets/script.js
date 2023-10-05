@@ -104,7 +104,7 @@ var maxRand = 5;
   charButton.on("click", charClass)
   raceButton.on("click", charRace)
   statButton.on("click", statStandardGen)
-=======
+
 
 charButton.on("click", charClass)
 raceButton.on("click", charRace)
