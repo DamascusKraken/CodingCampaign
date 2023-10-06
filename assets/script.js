@@ -1,12 +1,9 @@
 requestUrl = 'https://www.dnd5eapi.co/api/classes'; //classes
-
 requestUrl1 = 'https://www.dnd5eapi.co/api/races'; //Races
 requestUrl2 = 'https://api.fungenerators.com/name/generate?category=dragon&limit=10'; //Names
 var charButton = $("#classGen");
 var raceButton = $("#raceGen");
-
 var statButton = $("#statGen");
-
 var nameButton = $("#nameGen");
 
 
@@ -100,7 +97,8 @@ charRace = function(event) {
 
   charButton.on("click", charClass)
   raceButton.on("click", charRace)
-  statButton.on("click", statStandardGen)
+  statButton.on("click", statRollGen)
+
 
 function statRoll() {
 
@@ -142,6 +140,8 @@ function getLowRoll(scores){
 
   return lowestRoll;
 };
+
+
 charName = function(event) {
 
   fetch(requestUrl2)
@@ -161,8 +161,6 @@ charName = function(event) {
 }
 
 
-
-
 savedCharacters = function(){ //beginging of saving characters. We need to add an array of things to append. Right now it will only append one item from our last. We also want to append a paragraph for each character.
   savedCharacter.append(characterClass)
 
@@ -172,6 +170,7 @@ reroll = function(event){
   console.log("rerolling")
   charClass(event);
   charRace(event);
+  charName(event);
   statRollGen(event);
   // Add your functions in here to run when we hit reroll.
 }
