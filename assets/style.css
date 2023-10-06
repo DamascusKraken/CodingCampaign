@@ -1,5 +1,17 @@
+@font-face {
+    font-family: "DragonHunter", sans-serif;
+    src: url(./fonts/DragonHunter-9Ynxj.otf);
+}
+
+h1 {
+    font-family: "DragonHunter";
+    font
+}
+
 p {
     color: aqua;
+    font-family: "DragonHunter";
+    font-size: 20px;
 }
 
 footer {
