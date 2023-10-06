@@ -50,7 +50,6 @@ fetch(requestUrl)
         localStorage.setItem("characterClass",chosenClass.name);
   
         
-       
   });
 }
 
@@ -86,15 +85,18 @@ statStandardGen = function(event) { // Stat Random Generator Function (Standard 
 
 var maxRand = 5;
   var standardArray = [15,14,13,12,10,8];
+=======
+ statRollGen = function(event) { // Stat Roll Generator Function (4d6 drop lowest roll)
+
+>>>>>>> dd93cc762fca205f8a816c7b6799b6e70c27b7b9
   var statArray  = new Array(5);
   for(var i = 0; i < 6; i++){
-    var result = Math.floor((Math.random() * maxRand) );
-    statArray[i]  = standardArray[result];
-    standardArray.splice(result, 1);
-    maxRand = maxRand - 1;
+      statArray[i] = statRoll();
+      console.log(statArray[i]);
   }
-
+  //Renders the stat name and abilityScore
   for(var i = 0; i < 6; i++){
+<<<<<<< HEAD
     var attributes = ["Strength: ", "Wisdom: ","Constitution: ", "Intelligence: ", "Wisdom: ", "Charisma: "];
     console.log("this is the stat array: "  + statArray[i]);
     statIndex = i +1;
@@ -111,11 +113,44 @@ var maxRand = 5;
   statButton.on("click", statStandardGen)
 
 
-charButton.on("click", charClass)
-raceButton.on("click", charRace)
+  var scores = new Array(3);
+  for(var i = 0; i < 4; i++){
+      var d6Roll  = (Math.floor((Math.random() * 6) + 1));
+      scores[i] = (d6Roll);
+      var rollNumber = i + 1;
+      console.log("Roll " + rollNumber + ": " + scores[i]);
+  }
 
+  var lowestRoll = getLowRoll(scores);
+  console.log("Lowest Roll Dropped: " + lowestRoll);
 
+  var abilityScore = 0;
 
+  for(var i = 0; i < 4; i++){
+      abilityScore += scores[i];
+  }
+
+  abilityScore -= lowestRoll;
+  
+  return abilityScore;
+};
+  
+function getLowRoll(scores){
+  var lowestRoll = 6;
+  var lowRoll;
+  for(var i = 0; i <= 3; i ++){
+      for(var j = 0; j <= 3; j++){
+          if(scores[i] < scores[j]){
+              lowRoll = scores[i];
+              if (lowRoll < lowestRoll){
+                  lowestRoll = lowRoll;
+              }
+          }
+      }
+  }
+
+  return lowestRoll;
+};
 charName = function(event) {
 
   fetch(requestUrl2)
@@ -134,7 +169,7 @@ charName = function(event) {
 });
 }
 
-nameButton.on("click", charName)
+
 
 
 savedCharacters = function(){ //beginging of saving characters. We need to add an array of things to append. Right now it will only append one item from our last. We also want to append a paragraph for each character.
@@ -146,6 +181,7 @@ reroll = function(event){
   console.log("rerolling")
   charClass(event);
   charRace(event);
+  statRollGen(event);
   // Add your functions in here to run when we hit reroll.
 }
 
@@ -165,9 +201,11 @@ function incrementProgressBar() { //progress bar functionality, we call this aft
 setInterval(diceRoll, 10);
 
 
-  charButton.on("click", charClass)
-  raceButton.on("click", charRace)
-  rerollButton.on("click", reroll)
+charButton.on("click", charClass)
+raceButton.on("click", charRace)
+statButton.on("click", statRollGen)
+nameButton.on("click", charName)
+
   diceRoll();
 
   savedCharacters();
