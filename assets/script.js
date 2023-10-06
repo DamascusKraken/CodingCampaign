@@ -85,10 +85,10 @@ statStandardGen = function(event) { // Stat Random Generator Function (Standard 
 
 var maxRand = 5;
   var standardArray = [15,14,13,12,10,8];
-=======
+
  statRollGen = function(event) { // Stat Roll Generator Function (4d6 drop lowest roll)
 
->>>>>>> dd93cc762fca205f8a816c7b6799b6e70c27b7b9
+
   var statArray  = new Array(5);
   for(var i = 0; i < 6; i++){
       statArray[i] = statRoll();
@@ -96,7 +96,7 @@ var maxRand = 5;
   }
   //Renders the stat name and abilityScore
   for(var i = 0; i < 6; i++){
-<<<<<<< HEAD
+
     var attributes = ["Strength: ", "Wisdom: ","Constitution: ", "Intelligence: ", "Wisdom: ", "Charisma: "];
     console.log("this is the stat array: "  + statArray[i]);
     statIndex = i +1;
