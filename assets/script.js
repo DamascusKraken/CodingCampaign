@@ -19,7 +19,7 @@ var saveButton = $(".savebtn");
 var progressBar = {}; //evalutes if we have already updated the progress bar for this section.
 
 var strength; //creating varriables so we can use them outside of statgen scope.
-var wisdom;
+var dexterity;
 var constitution;
 var intelligence;
 var wisdom;
@@ -43,9 +43,10 @@ var newCharacter = { //object for our name race class and skills.
   class: characterClass,
   stats: {
     str: strength,
-    wis: wisdom,
+    dex: dexterity,
     con: constitution,
     int: intelligence,
+    wis: wisdom,
     charis: charisma
   }
 };
@@ -126,15 +127,17 @@ charRace = function(event) {
 
       //Setting values here so we can put in localstorage.
       strength = statArray[0];
-      wisdom = statArray[1]; 
+      dexterity = statArray[1];
       constitution = statArray[2];
       intelligence = statArray[3];
-      charisma = statArray[4];
+      wisdom = statArray[4];
+      charisma = statArray[5];
 
       newCharacter.stats.str = strength; //setting values in our newCharacter object.
-      newCharacter.stats.wis = wisdom;
+      
       newCharacter.stats.con = constitution;
       newCharacter.stats.int = intelligence;
+      newCharacter.stats.wis = wisdom;
       newCharacter.stats.charis = charisma;
 
       if (!progressBar[3]){ //We update the progress bar but only one time per section.
