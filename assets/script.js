@@ -161,8 +161,7 @@ charRace = function(event) {
   statButton.on("click", statRollGen)
 
 
-  }
-}
+
 
   charButton.on("click", charClass)
   raceButton.on("click", charRace)
@@ -250,10 +249,10 @@ saveFeature = function(){ //when we click save button. We save values to push in
   
   localStorage.setItem('characters', updatedCharacters);
 
+};
 
-});
 
-}
+
 
 
 savedCharacters = function(){ //beginging of saving characters. We need to add an array of things to append. Right now it will only append one item from our last. We also want to append a paragraph for each character.
