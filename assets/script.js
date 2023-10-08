@@ -247,8 +247,9 @@ savedCharacters = function(){ //beginging of saving characters. We need to add a
    
     var paragraph = document.createElement('p');
     
-    paragraph.textContent = character.name + ", The " + character.race + " " + character.class +  " Strength:" + character.stats.str +  " Wisdom:" + character.stats.wis +  " Constituion:" + character.stats.con +  " Intelligence:" + character.stats.int +  " Charisma:" + character.stats.charis;
-    paragraph.classList.add('is-size-6');
+    paragraph.textContent = " " + character.name + ", The " + character.race + " " + character.class +  " Strength:" + character.stats.str +  " Wisdom:" + character.stats.wis +  " Constituion:" + character.stats.con +  " Intelligence:" + character.stats.int +  " Charisma:" + character.stats.charis;
+    paragraph.classList.add('is-size-6', 'savedCharacters', 'is-italic');
+    
 
    
     savedCharacter.append(paragraph);

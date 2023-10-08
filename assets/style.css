@@ -35,6 +35,12 @@ p {
     font-size: 20px;
 }
 
+.savedCharacters{
+    color: rgb(37, 138, 42);
+    font-family: "DragonHunter";
+    font-size: 20px;
+}
+
 
 div .column{
     border: 5px solid maroon;
