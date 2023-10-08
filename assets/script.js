@@ -134,7 +134,7 @@ charRace = function(event) {
       charisma = statArray[5];
 
       newCharacter.stats.str = strength; //setting values in our newCharacter object.
-      
+      newCharacter.stats.dex = dexterity;
       newCharacter.stats.con = constitution;
       newCharacter.stats.int = intelligence;
       newCharacter.stats.wis = wisdom;
