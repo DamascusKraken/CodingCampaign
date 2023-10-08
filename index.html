@@ -10,65 +10,85 @@
 </head>
 <body class="has-background-grey-dark">
 
-
-  <nav class="navbar is-dark is-justify-content-center">
+<!--want to change the header to different color and size-->
+<!--need to figure out how to move the die evenly on either side -->
+  <header class="navbar has-background-grey-dark is-justify-content-center">
     <div class="navbar-brand  ">
             <img class = "rollDice" src="/assets/images/20.png" alt="Nat-20" width="100px">
-            <h1 class="is-size-1 has-text-weight-bold has-text-primary-light is-flex is-justify-content-center">Dnd Character Generator</h1>
+            <h1 class="is-size-1 has-text-weight-bold is-flex is-justify-content-center">DND Character Generator</h1>
             <img class = "rollDice" src="/assets/images/1.png" alt="Nat-20" width="100px">
     </div>
+  </header>
     
+<!-- <section class="hero is-medium is-link">
+    <div class="is is-justify-content-left">
+      <img class= "rollDice" src="/assets/images/20.png" alt="Nat-20" width="200px">
+    </div>
+      <h1 class="is-size-1 has-text-weight-bold has-text-primary-light is-flex is-justify-content-center">Dnd Character Generator</h1>
+    <div class="is is-align-items-left"> 
+      <img class="rollDice" src="/assets/images/1.png" alt="Nat-20" width="200px">
+    </div>
+    </section> -->
     
-</nav>
 
-<header class = "image">
-  <img  src="/assets/images/The-Fierce-Force-1024x576.jpg" alt="Nat-20">
-</header>
-
-
+<section class="image">
+  <div class="quote">
+    <blockquote>
+      "One App to build them all, <br> One App to name them, <br> One App to stat-roll for all, <br> and in the darkness bind them"
+    </blockquote>
+  </div>
+</section>
 <!--Progress Bar-->
 <progress class="progress is-success" value="0" max="100"></progress> 
 
+  <div class="columns is-flex is-justify-content-center has-text-centered"> 
 
-    
-    <div class="columns  has-text-centered"> <!-- testing bulma -->
-      
-        <div class="column" >
-          <p style="margin-bottom: 100px;">Name Generator</p>
-          <div id="buttons">
+        <div class="box has-background-danger-light mx-5 block is-3">
+          <p style="margin-bottom: 150px;">Name Generator</p>
+          <div>
+            <p id="nameText"></p>
             <button id="nameGen" class="button is-danger">Create</button>
           </div>
         </div>
-        <div class="column">
-          <p style="margin-bottom: 100px;" >Class Generator</p>
-          
+
+        <div class="box has-background-danger-light mx-5 block is-3">
+          <p style="margin-bottom: 150px;">Class Generator</p>
           <div>
             <p id="classText"></p>
             <button id="classGen" class="button is-danger">Create</button>
           </div>
         </div>
-        <div class="column">
-          <p style="margin-bottom: 100px;">Race Generator</p>
-          
-          <div id="buttons">
+
+        <div class="box has-background-danger-light mx-5 block is-3">
+          <p  style="margin-bottom: 150px;">Race Generator</p>
+          <div>
             <p id ="raceText"></p>
             <button id="raceGen" class="button is-danger">Create</button>
           </div>
         </div>
-        <div class="column">
-          <p style="margin-bottom: 100px;">Stat Generator</p>
-          
-          <div id="buttons">
-            <button id="skillGen" class="button is-danger" style="margin-bottom: 100px;">Create</button>
+
+
+        <!--Need to figure out how to resize the stat box-->
+        <div class="box has-background-danger-light mx-5 mb-5 block is-3">
+          <p style="margin-bottom: 150px;">Stat Generator</p>
+          <div id ="statContainer" class = "statBlock has-text-centered">
+            <p id="stat-1" class = "has-text-weight-normal "></p>
+            <p id="stat-2" class = "has-text-weight-normal "></p>
+            <p id="stat-3" class = "has-text-weight-normal "></p>
+            <p id="stat-4" class = "has-text-weight-normal "></p>
+            <p id="stat-5" class = "has-text-weight-normal "></p>
+            <p id="stat-6" class = "has-text-weight-normal "></p>
+          </div>
+          <div>
+            <button id="statGen" class="button is-danger">Create</button>
           </div>
         </div>
-        
       </div>
 
       <!--Center Save button-->
       <div class="columns is-centered mt-6">
         <div class="column is-narrow">
-          <button class="button is-primary is-large">Save</button>
+          <button class="button is-primary is-large savebtn">Save</button>
           <button id ="rerollButton"class="button is-primary is-large" style="margin-left: 150px;">Reroll</button>
         </div>
       </div>
@@ -83,7 +103,7 @@
           
         </div>
 
-      </div>
+    </div>
 
 
 

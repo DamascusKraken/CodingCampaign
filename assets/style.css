@@ -1,12 +1,50 @@
-p {
-    color: aqua;
+@font-face {
+    font-family: "DragonHunter", sans-serif;
+    src: url(./fonts/DragonHunter-9Ynxj.otf);
 }
 
-footer {
-    background-color: black;
+h1 {
+    font-family: "DragonHunter";
+    text-shadow: 5px 5px maroon;
+    color: white;
 }
+
+.image {
+    background-image: url("./images/03-DndSplash.webp");
+    height: 800px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.quote {
+    font-size: 50px;
+    font-family: "DragonHunter";
+    display: flex;
+    justify-content: end;
+    text-align: center;
+    text-shadow: 5px 5px maroon;
+    color: white;
+  }
+
+p {
+    color: maroon;
+    font-family: "DragonHunter";
+    font-size: 20px;
+}
+
 
 div .column{
-    outline: 2px solid rgb(0, 124, 128);
+    border: 5px solid maroon;
+    border-radius: 5px 5px;
+    padding: 10px;
+
 }
 
+.statBlock {
+    font-family: "DragonHunter";
+    font-size: 20px;
+    color: maroon;
+}
