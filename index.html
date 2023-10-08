@@ -3,33 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" type="text/css" href="assets/style.css" />
     <title>Coding Campaign</title>
 </head>
-<body class="has-background-grey-dark">
 
-<!--want to change the header to different color and size-->
-<!--need to figure out how to move the die evenly on either side -->
+<body class="has-background-grey-dark">
   <header class="navbar has-background-grey-dark is-justify-content-center">
     <div class="navbar-brand  ">
-            <img class = "rollDice" src="/assets/images/20.png" alt="Nat-20" width="100px">
-            <h1 class="is-size-1 has-text-weight-bold is-flex is-justify-content-center">Dnd Character Generator</h1>
-            <img class = "rollDice" src="/assets/images/1.png" alt="Nat-20" width="100px">
+            <img class="rollDice" src="/assets/images/20.png" alt="Nat-20" width="150px">
+            <h1 class="is-size-1 has-text-weight-bold is-flex is-justify-content-center is-align-items-center">Dnd Character Generator</h1>
+            <img class="rollDice" src="/assets/images/1.png" alt="Nat-20" width="150px">
     </div>
-  </header>
-    
-<!-- <section class="hero is-medium is-link">
-    <div class="is is-justify-content-left">
-      <img class= "rollDice" src="/assets/images/20.png" alt="Nat-20" width="200px">
-    </div>
-      <h1 class="is-size-1 has-text-weight-bold has-text-primary-light is-flex is-justify-content-center">Dnd Character Generator</h1>
-    <div class="is is-align-items-left"> 
-      <img class="rollDice" src="/assets/images/1.png" alt="Nat-20" width="200px">
-    </div>
-    </section> -->
-    
+  </header>    
 
 <section class="image">
   <div class="quote">
@@ -38,40 +24,47 @@
     </blockquote>
   </div>
 </section>
+
 <!--Progress Bar-->
 <progress class="progress is-success" value="0" max="100"></progress> 
 
   <div class="columns is-flex is-justify-content-center has-text-centered"> 
 
-        <div class="box has-background-danger-light mx-5 block is-3">
-          <p style="margin-bottom: 150px;">Name Generator</p>
+        <div class="column has-background-danger-light mx-5 block is-2">
+          <p>Name Generator</p>
           <div>
+            <br>
             <p id="nameText"></p>
-            <button id="nameGen" class="button is-danger">Create</button>
+            <br>
+            <button id="nameGen" class="button is-danger is-large is-outlined is-rounded">Create</button>
           </div>
         </div>
 
-        <div class="box has-background-danger-light mx-5 block is-3">
-          <p style="margin-bottom: 150px;">Class Generator</p>
+        <div class="column has-background-danger-light mx-5 block is-2">
+          <p>Class Generator</p>
           <div>
+            <br>
             <p id="classText"></p>
-            <button id="classGen" class="button is-danger">Create</button>
+            <br>
+            <button id="classGen" class="button is-danger is-large is-outlined is-rounded">Create</button>
           </div>
         </div>
 
-        <div class="box has-background-danger-light mx-5 block is-3">
-          <p  style="margin-bottom: 150px;">Race Generator</p>
+        <div class="column has-background-danger-light mx-5 block is-2">
+          <p>Race Generator</p>
           <div>
+            <br>
             <p id ="raceText"></p>
-            <button id="raceGen" class="button is-danger">Create</button>
+            <br>
+            <button id="raceGen" class="button is-danger is-large is-outlined is-rounded">Create</button>
           </div>
         </div>
-
 
         <!--Need to figure out how to resize the stat box-->
-        <div class="box has-background-danger-light mx-5 mb-5 block is-3">
-          <p style="margin-bottom: 150px;">Stat Generator</p>
+        <div class="column has-background-danger-light mx-5 mb-5 block is-2">
+          <p>Stat Generator</p>
           <div id ="statContainer" class = "statBlock has-text-centered">
+            <br>
             <p id="stat-1" class = "has-text-weight-normal "></p>
             <p id="stat-2" class = "has-text-weight-normal "></p>
             <p id="stat-3" class = "has-text-weight-normal "></p>
@@ -79,17 +72,17 @@
             <p id="stat-5" class = "has-text-weight-normal "></p>
             <p id="stat-6" class = "has-text-weight-normal "></p>
           </div>
+          <br>
           <div>
-            <button id="statGen" class="button is-danger">Create</button>
+            <button id="statGen" class="button is-danger is-large is-outlined is-rounded">Create</button>
           </div>
         </div>
       </div>
 
-      <!--Center Save button-->
       <div class="columns is-centered mt-6">
         <div class="column is-narrow">
-          <button class="button is-link is-large">Save</button>
-          <button id ="rerollButton"class="button is-link is-large" style="margin-left: 150px;">Reroll</button>
+          <button class="button is-danger is-large is-rounded">Save</button>
+          <button id ="rerollButton" class="button is-danger is-large is-rounded" style="margin-left: 150px;">Reroll</button>
         </div>
       </div>
 
@@ -99,22 +92,11 @@
       
         <h1 class="is-size-1 has-text-weight-bold has-text-primary-light is-flex is-justify-content-center">Saved Characters</h1>
 
-        <div class="is-size-1 has-text-weight-bold has-text-primary-light is-justify-content-center" id="savedCharacter"> <!-- can post saved characters here, class race name and skills.-->
-          
-        </div>
-
+<!-- can post saved characters here, class race name and skills.--> 
+        <div class="is-size-1 has-text-weight-bold has-text-primary-light is-justify-content-center" id="savedCharacter"></div>
     </div>
-
-
-
-
-
-
-
-
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="assets/script.js"></script>
-    
 </body>
 
 </html>
