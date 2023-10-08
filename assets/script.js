@@ -54,6 +54,8 @@ var newCharacter = { //object for our name race class and skills.
 
 
 
+
+
 charClass = function(event) { //class random creation function.
 fetch(requestUrl)
   .then(function (response) {
@@ -121,6 +123,7 @@ charRace = function(event) {
       statArray[i] = statRoll();
       console.log(statArray[i]);
 
+
       //Setting values here so we can put in localstorage.
       strength = statArray[0];
       wisdom = statArray[1]; 
@@ -141,6 +144,7 @@ charRace = function(event) {
 
     console.log(newCharacter);
       
+
   }
   //Renders the stat name and abilityScore
   for(var i = 0; i < 6; i++){
@@ -148,12 +152,23 @@ charRace = function(event) {
       statIndex = i +1;
       var stat = $("#stat-" + statIndex);
       stat.text(attributes[i] + statArray[i]);
+
       
   }
 }
 
  
   statButton.on("click", statRollGen)
+
+
+  }
+}
+
+  charButton.on("click", charClass)
+  raceButton.on("click", charRace)
+  statButton.on("click", statRollGen)
+
+
 
 function statRoll() {
 
@@ -212,6 +227,7 @@ charName = function(event) {
         console.log(randomName);
       var buttonText = $("#nameText");
       buttonText.text(randomName);
+
       newCharacter.name = randomName;
 
       if (!progressBar[4]){ //We update the progress bar but only one time per section.
@@ -233,6 +249,9 @@ saveFeature = function(){ //when we click save button. We save values to push in
   
   
   localStorage.setItem('characters', updatedCharacters);
+
+
+});
 
 }
 
@@ -281,6 +300,7 @@ function incrementProgressBar() { //progress bar functionality, we call this aft
 
 
 
+
   charButton.on("click", charClass)
   raceButton.on("click", charRace)
   rerollButton.on("click", reroll)
@@ -288,5 +308,6 @@ function incrementProgressBar() { //progress bar functionality, we call this aft
   setInterval(diceRoll, 10);
   diceRoll();
   savedCharacters();
+
 
 
