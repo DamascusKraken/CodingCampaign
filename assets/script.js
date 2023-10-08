@@ -148,7 +148,7 @@ charRace = function(event) {
   }
   //Renders the stat name and abilityScore
   for(var i = 0; i < 6; i++){
-      var attributes = ["Strength: ", "Wisdom: ","Constitution: ", "Intelligence: ", "Wisdom: ", "Charisma: "];
+      var attributes = ["Strength: ", "Dexterity: ","Constitution: ", "Intelligence: ", "Wisdom: ", "Charisma: "];
       statIndex = i +1;
       var stat = $("#stat-" + statIndex);
       stat.text(attributes[i] + statArray[i]);
