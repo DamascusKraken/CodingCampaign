@@ -44,7 +44,7 @@ p {
 }
 
 
-}
+
 
 .image {
     background-image: url("./images/03-DndSplash.webp");
@@ -74,7 +74,7 @@ p {
 
 
 
-div .column{
+div .column{}
 
 .column {
     box-shadow: 5px 5px black;
