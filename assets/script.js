@@ -117,7 +117,7 @@ charRace = function(event) {
 }
 
 
- statRollGen = function(event) { // Stat Roll Generator Function (4d6 drop lowest roll)
+ statRollCalc = function(event) { // Stat Roll Generator Function (4d6 drop lowest roll)
 
   var statArray  = new Array(5);
   for(var i = 0; i < 6; i++){
@@ -160,15 +160,15 @@ charRace = function(event) {
   }
 }
 
- 
-  statButton.on("click", statRollGen)
+
+  
 
 
 
 
   charButton.on("click", charClass)
   raceButton.on("click", charRace)
-  statButton.on("click", statRollGen)
+  statButton.on("click", statRollCalc)
 
 
 
@@ -282,7 +282,7 @@ reroll = function(event){
   charClass(event);
   charRace(event);
   charName(event);
-  statRollGen(event);
+  statRollCalc(event);
   // Add your functions in here to run when we hit reroll.
 }
 
