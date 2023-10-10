@@ -163,9 +163,7 @@ charRace = function(event) {
 
 
 
-  charButton.on("click", charClass)
-  raceButton.on("click", charRace)
-  statButton.on("click", statRollGen)
+
 
 
 
