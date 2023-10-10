@@ -17,6 +17,8 @@ var rerollButton = $("#rerollButton")
 var savedCharacter = $("#savedCharacter")
 var saveButton = $(".savebtn");
 var progressBar = {}; //evalutes if we have already updated the progress bar for this section.
+var closedthebutton = false;
+
 
 var strength; //creating varriables so we can use them outside of statgen scope.
 var dexterity;
@@ -129,6 +131,7 @@ charRace = function(event) {
 
  statRollCalc = function(event) { // Stat Roll Generator Function (4d6 drop lowest roll)
 
+statButton.removeClass("btnfix"); //fix for buttons, we remove class on this one as this makes the container bigger than we want.
   var statArray  = new Array(5);
   for(var i = 0; i < 6; i++){
       statArray[i] = statRoll();
@@ -149,6 +152,8 @@ charRace = function(event) {
       newCharacter.stats.int = intelligence;
       newCharacter.stats.wis = wisdom;
       newCharacter.stats.charis = charisma;
+
+      statButton.text("Reroll") //rename create to reroll
 
       if (!progressBar[3]){ //We update the progress bar but only one time per section.
         incrementProgressBar();
@@ -242,6 +247,7 @@ charName = function(event) {
       buttonText.text(randomName);
 
       newCharacter.name = randomName;
+      nameButton.text("Reroll") //rename create to reroll
 
       if (!progressBar[4]){ //We update the progress bar but only one time per section.
         incrementProgressBar();
@@ -256,7 +262,12 @@ charName = function(event) {
 
 }
 
+
 saveFeature = function(){ //when we click save button. We save values to push into our character object.
+
+  console.log(progressBar);
+
+  if (progressBar[0] && progressBar[1] && progressBar[3] && progressBar[4]){ //once our progress bar is full (aka every entry has been filled) we will run the saving function!
   console.log("saving!")
   characters.push(newCharacter);
 
@@ -264,7 +275,8 @@ saveFeature = function(){ //when we click save button. We save values to push in
   var updatedCharacters = JSON.stringify(characters);
   
   localStorage.setItem('characters', updatedCharacters);
-
+  location.reload();
+}
 };
 
 
@@ -275,12 +287,41 @@ savedCharacters = function(){ //beginging of saving characters. We need to add a
    
     var paragraph = document.createElement('p');
     
-    paragraph.textContent = " " + character.name + ", The " + character.race + " " + character.class +  " Strength: " + character.stats.str +  " Dexterity: " + character.stats.dex +  " Constituion: " + character.stats.con +  " Intelligence: " + character.stats.int +  " Wisdom: " + character.stats.wis +  " Charisma: " + character.stats.charis;
-    paragraph.classList.add('is-size-5', 'savedCharacters');
+    paragraph.innerHTML = " " + "<span class='highlight'>" + character.name + "</span>" + ", The " + "<span class='highlight1'>" + character.race +   "</span>" + " " + "<span class='highlight2'>" + character.class +  "</span>"  + " " + "<span class='highlight3'>" + " Stat's:" +  "</span>"  + " Strength: " + character.stats.str +  " Wisdom: " + character.stats.wis +  " Constituion: " + character.stats.con +  " Intelligence: " + character.stats.int +  " Charisma: " + character.stats.charis;
+
     
-    savedCharacter.append(paragraph);
+    paragraph.classList.add('is-size-5', 'savedCharacters', 'column');
+
+    var deleteButton = document.createElement('button'); //creating a delete button for to be appended for each paragraph
+    deleteButton.innerHTML = 'Delete';
+    deleteButton.classList.add('deleteButton', 'button', 'is-danger', 'is-pulled-right'); //adding classes to the button.
+  
+  
+  deleteButton.addEventListener('click', function() { //function within saved to handle deletion without grabbing out of scope.
+    
+    var index = characters.indexOf(character);
+    if (index > -1) {
+      characters.splice(index, 1);
+    }
+
+    
+    paragraph.remove();
+    localStorage.setItem('characters', JSON.stringify(characters));
+  });
+    
+  paragraph.appendChild(deleteButton);
+    
+  savedCharacter.append(paragraph);
+
+   
   });
 }
+
+
+
+
+
+
 
 reroll = function(event){
   console.log("rerolling")
@@ -333,6 +374,39 @@ function renderCharacterModal(){
   modalStat4.text("Intelligence: " + newCharacter.stats.int);
   modalStat5.text("Wisdom: " + newCharacter.stats.wis);
   modalStat6.text("Charisma: " + newCharacter.stats.charis);
+
+
+var container = $('<div>').addClass('is-flex is-justify-content-space-evenly is-align-items-center mb-3'); //creating buttons.
+var sveButton = $('<button>').addClass('button is-danger  is-rounded ').text('Save');
+var rrButton = $('<button>').addClass('button is-danger   is-rounded  ').text('Reroll');
+var closeButton = $('<button>').addClass('button is-danger  is-rounded  ').text('Close');
+
+
+
+sveButton.on('click', function() {
+ 
+  saveFeature();
+});
+
+closeButton.on('click', function() {
+  modal.removeClass('is-active');
+  
+  
+});
+
+rrButton.on('click', function() {
+  reroll();
+  
+  
+});
+
+if (!closedthebutton){ //statement only will append to the modal once.
+container.insertAfter(modalStat6);
+container.append(sveButton, rrButton, closeButton);
+closedthebutton = true;
+}
+
+
 }
 
 
