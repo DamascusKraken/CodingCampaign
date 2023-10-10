@@ -177,7 +177,7 @@ charRace = function(event) {
 
 
 
-
+  statButton.text("Reroll")
   if(progressValue == 100){
     characterOverview(attributes);
   }
@@ -251,6 +251,7 @@ charName = function(event) {
       if(progressValue == 100){
         characterOverview();
       }
+      nameButton.text("Reroll")
 });
 
 }
@@ -274,7 +275,7 @@ savedCharacters = function(){ //beginging of saving characters. We need to add a
    
     var paragraph = document.createElement('p');
     
-    paragraph.textContent = " " + character.name + ", The " + character.race + " " + character.class +  " Strength: " + character.stats.str +  " Wisdom: " + character.stats.wis +  " Constituion: " + character.stats.con +  " Intelligence: " + character.stats.int +  " Charisma: " + character.stats.charis;
+    paragraph.textContent = " " + character.name + ", The " + character.race + " " + character.class +  " Strength: " + character.stats.str +  " Dexterity: " + character.stats.dex +  " Constituion: " + character.stats.con +  " Intelligence: " + character.stats.int +  " Wisdom: " + character.stats.wis +  " Charisma: " + character.stats.charis;
     paragraph.classList.add('is-size-5', 'savedCharacters');
     
     savedCharacter.append(paragraph);
