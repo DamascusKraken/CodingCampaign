@@ -82,7 +82,6 @@ fetch(requestUrl)
         newCharacter.class = chosenClass.name;
   
         
-       
   });
 }
 
@@ -155,22 +154,11 @@ charRace = function(event) {
       statIndex = i +1;
       var stat = $("#stat-" + statIndex);
       stat.text(attributes[i] + statArray[i]);
-
       
   }
+
+
 }
-
-
-  
-
-
-
-
-  charButton.on("click", charClass)
-  raceButton.on("click", charRace)
-  statButton.on("click", statRollCalc)
-
-
 
 function statRoll() {
 
@@ -310,6 +298,5 @@ function incrementProgressBar() { //progress bar functionality, we call this aft
   setInterval(diceRoll, 10);
   diceRoll();
   savedCharacters();
-
 
 
