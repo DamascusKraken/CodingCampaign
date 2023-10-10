@@ -41,6 +41,8 @@ Cooperating as a unit
 4. Once all categories have been filled a modal of the character overview will display for the user
 5. If desired the user can then choose to save the character for future use or reroll all categories at once.
 
+GIF Location: https://www.canva.com/design/DAFw42HAz0s/vhTSR6s08ZBnqW0sU8yWhA/watch?utm_content=DAFw42HAz0s&utm_campaign=share_your_design&utm_medium=link&utm_source=shareyourdesignpanel
+
 ## Credits
 
 Cody Leight - https://github.com/codyleight  
