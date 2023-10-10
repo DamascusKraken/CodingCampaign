@@ -86,3 +86,17 @@ div .column{}
 .button:hover{
     background-color: gray;
 }
+
+.modal-content {
+    
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%; /* Could be more or less, depending on screen size */
+    color: maroon;
+    font-family: "DragonHunter";
+    font-size: 20px;
+    box-shadow: 5px 5px black;
+    border-radius: 10px 10px;
+    border: 5px solid maroon;
+  }
