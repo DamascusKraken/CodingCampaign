@@ -38,13 +38,10 @@ p {
 
 
 .savedCharacters{
-    color: rgb(37, 138, 42);
+    color: maroon;
     font-family: "DragonHunter";
     font-size: 20px;
 }
-
-
-
 
 .image {
     background-image: url("./images/03-DndSplash.webp");
@@ -72,16 +69,12 @@ p {
     font-size: 20px;
 }
 
-
-
-div .column{}
-
 .column {
     box-shadow: 5px 5px black;
     border-radius: 10px 10px;
-
     border: 5px solid maroon;
 }
+
 
 .button:hover{
     background-color: gray;
