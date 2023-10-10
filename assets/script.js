@@ -182,7 +182,7 @@ statButton.removeClass("btnfix"); //fix for buttons, we remove class on this one
 
 
 
-
+  statButton.text("Reroll")
   if(progressValue == 100){
     characterOverview(attributes);
   }
@@ -257,6 +257,7 @@ charName = function(event) {
       if(progressValue == 100){
         characterOverview();
       }
+      nameButton.text("Reroll")
 });
 
 }
@@ -302,6 +303,7 @@ savedCharacters = function(){ //beginging of saving characters. We need to add a
     if (index > -1) {
       characters.splice(index, 1);
     }
+
     
     paragraph.remove();
     localStorage.setItem('characters', JSON.stringify(characters));
