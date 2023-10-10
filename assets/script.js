@@ -287,7 +287,7 @@ savedCharacters = function(){ //beginging of saving characters. We need to add a
    
     var paragraph = document.createElement('p');
     
-    paragraph.innerHTML = " " + "<span class='highlight'>" + character.name + "</span>" + ", The " + "<span class='highlight1'>" + character.race +   "</span>" + " " + "<span class='highlight2'>" + character.class +  "</span>"  + " " + "<span class='highlight3'>" + " Stat's:" +  "</span>"  + " Strength: " + character.stats.str +  " Wisdom: " + character.stats.wis +  " Constituion: " + character.stats.con +  " Intelligence: " + character.stats.int +  " Charisma: " + character.stats.charis;
+    paragraph.innerHTML = " " + "<span class='highlight'>" + character.name + "</span>" + ", The " + "<span class='highlight1'>" + character.race +   "</span>" + " " + "<span class='highlight2'>" + character.class +  "</span>"  + " " + "<span class='highlight3'>" + " Stat's:" +  "</span>"  + " Strength: " + character.stats.str +  " Dexterity:" + character.stats.dex +  " Wisdom: " + character.stats.wis +  " Constituion: " + character.stats.con +  " Intelligence: " + character.stats.int +  " Charisma: " + character.stats.charis;
 
     
     paragraph.classList.add('is-size-5', 'savedCharacters', 'column');
