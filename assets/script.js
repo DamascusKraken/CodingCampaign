@@ -19,7 +19,7 @@ var saveButton = $(".savebtn");
 var progressBar = {}; //evalutes if we have already updated the progress bar for this section.
 
 var strength; //creating varriables so we can use them outside of statgen scope.
-var wisdom;
+var dexterity;
 var constitution;
 var intelligence;
 var wisdom;
@@ -43,9 +43,10 @@ var newCharacter = { //object for our name race class and skills.
   class: characterClass,
   stats: {
     str: strength,
-    wis: wisdom,
+    dex: dexterity,
     con: constitution,
     int: intelligence,
+    wis: wisdom,
     charis: charisma
   }
 };
@@ -79,6 +80,10 @@ fetch(requestUrl)
         }
 
         newCharacter.class = chosenClass.name;
+        
+        if(progressValue == 100){
+          characterOverview(newCharacter.class);
+        }
   
         
        
@@ -111,12 +116,16 @@ charRace = function(event) {
 
       
       newCharacter.race = chosenRace.name;
+      
+      if(progressValue == 100){
+        characterOverview();
+      }
 
   });
 }
 
 
- statRollGen = function(event) { // Stat Roll Generator Function (4d6 drop lowest roll)
+ statRollCalc = function(event) { // Stat Roll Generator Function (4d6 drop lowest roll)
 
   var statArray  = new Array(5);
   for(var i = 0; i < 6; i++){
@@ -126,15 +135,17 @@ charRace = function(event) {
 
       //Setting values here so we can put in localstorage.
       strength = statArray[0];
-      wisdom = statArray[1]; 
+      dexterity = statArray[1];
       constitution = statArray[2];
       intelligence = statArray[3];
-      charisma = statArray[4];
+      wisdom = statArray[4];
+      charisma = statArray[5];
 
       newCharacter.stats.str = strength; //setting values in our newCharacter object.
-      newCharacter.stats.wis = wisdom;
+      newCharacter.stats.dex = dexterity;
       newCharacter.stats.con = constitution;
       newCharacter.stats.int = intelligence;
+      newCharacter.stats.wis = wisdom;
       newCharacter.stats.charis = charisma;
 
       if (!progressBar[3]){ //We update the progress bar but only one time per section.
@@ -142,30 +153,28 @@ charRace = function(event) {
         progressBar[3] = true;
       }
 
+     
+
     console.log(newCharacter);
       
 
   }
   //Renders the stat name and abilityScore
   for(var i = 0; i < 6; i++){
-      var attributes = ["Strength: ", "Wisdom: ","Constitution: ", "Intelligence: ", "Wisdom: ", "Charisma: "];
+      var attributes = ["Strength: ", "Dexterity: ","Constitution: ", "Intelligence: ", "Wisdom: ", "Charisma: "];
       statIndex = i +1;
       var stat = $("#stat-" + statIndex);
       stat.text(attributes[i] + statArray[i]);
 
       
   }
-}
 
  
-  statButton.on("click", statRollGen)
 
-
-
-
-  
-
-
+  if(progressValue == 100){
+    characterOverview(attributes);
+  }
+}
 
 function statRoll() {
 
@@ -231,11 +240,13 @@ charName = function(event) {
         incrementProgressBar();
         progressBar[4] = true;
       }
+
+      if(progressValue == 100){
+        characterOverview();
+      }
 });
 
 }
-
-nameButton.on("click", charName)
 
 saveFeature = function(){ //when we click save button. We save values to push into our character object.
   console.log("saving!")
@@ -277,7 +288,7 @@ reroll = function(event){
   charClass(event);
   charRace(event);
   charName(event);
-  statRollGen(event);
+  statRollCalc(event);
   // Add your functions in here to run when we hit reroll.
 }
 
@@ -292,16 +303,56 @@ function diceRoll(){
 function incrementProgressBar() { //progress bar functionality, we call this after we generate.
   progressValue += 25;
   $('progress').val(progressValue);
+  
+}
+
+var modal = $('.modal');
+
+ function characterOverview(){
+  modal.addClass('is-active');
+  renderCharacterModal();
+ };
+
+function renderCharacterModal(){
+  var modalHeader = $('#modalHeader'); //character Name
+  var modalClass = $('#modalClass');
+  var modalRace = $('#modalRace');
+  var modalStat1 = $('#modalStat-1');
+  var modalStat2 = $('#modalStat-2');
+  var modalStat3 = $('#modalStat-3');
+  var modalStat4 = $('#modalStat-4');
+  var modalStat5 = $('#modalStat-5');
+  var modalStat6 = $('#modalStat-6');
+
+  modalHeader.text(newCharacter.name);
+  modalClass.text("Class: " + newCharacter.class);
+  modalRace.text("Race: " + newCharacter.race);
+  
+  modalStat1.text("Strength: " + newCharacter.stats.str);
+  modalStat2.text("Dexterity: " + newCharacter.stats.dex);
+  modalStat3.text("Constitution: " + newCharacter.stats.con);
+  modalStat4.text("Intelligence: " + newCharacter.stats.int);
+  modalStat5.text("Wisdom: " + newCharacter.stats.wis);
+  modalStat6.text("Charisma: " + newCharacter.stats.charis);
 }
 
 
+ var closeBtn = $('.modal-close')
+
+ closeModal = function(event){
+    modal.removeClass('is-active');
+ }
 
 
 
+  closeBtn.on("click", closeModal)
+  nameButton.on("click", charName)
   charButton.on("click", charClass)
   raceButton.on("click", charRace)
+  statButton.on("click", statRollCalc)
   rerollButton.on("click", reroll)
   saveButton.on("click", saveFeature)
+
   setInterval(diceRoll, 10);
   diceRoll();
   savedCharacters();
