@@ -79,9 +79,6 @@ fetch(requestUrl)
         }
 
         newCharacter.class = chosenClass.name;
-  
-        
-       
   });
 }
 
@@ -148,7 +145,7 @@ charRace = function(event) {
   }
   //Renders the stat name and abilityScore
   for(var i = 0; i < 6; i++){
-      var attributes = ["Strength: ", "Wisdom: ","Constitution: ", "Intelligence: ", "Wisdom: ", "Charisma: "];
+      var attributes = ["Strength:  ", "Wisdom:  ","Constitution:  ", "Intelligence:  ", "Wisdom:  ", "Charisma:  "];
       statIndex = i +1;
       var stat = $("#stat-" + statIndex);
       stat.text(attributes[i] + statArray[i]);
@@ -158,13 +155,7 @@ charRace = function(event) {
 }
 
  
-  statButton.on("click", statRollGen)
-
-
-
-
-  
-
+statButton.on("click", statRollGen)
 
 
 function statRoll() {
@@ -244,30 +235,21 @@ saveFeature = function(){ //when we click save button. We save values to push in
   
   var updatedCharacters = JSON.stringify(characters);
   
-  
   localStorage.setItem('characters', updatedCharacters);
 
 };
 
 
-
-
-
 savedCharacters = function(){ //beginging of saving characters. We need to add an array of things to append. Right now it will only append one item from our last. We also want to append a paragraph for each character.
   
-
-
-
   characters.forEach(function(character) {
     var savedCharacter = $("#savedCharacter")
    
     var paragraph = document.createElement('p');
     
     paragraph.textContent = " " + character.name + ", The " + character.race + " " + character.class +  " Strength:" + character.stats.str +  " Wisdom:" + character.stats.wis +  " Constituion:" + character.stats.con +  " Intelligence:" + character.stats.int +  " Charisma:" + character.stats.charis;
-    paragraph.classList.add('is-size-6', 'savedCharacters', 'is-italic');
+    paragraph.classList.add('is-size-6', 'savedCharacters');
     
-
-   
     savedCharacter.append(paragraph);
   });
 }
@@ -293,8 +275,6 @@ function incrementProgressBar() { //progress bar functionality, we call this aft
   progressValue += 25;
   $('progress').val(progressValue);
 }
-
-
 
 
 
